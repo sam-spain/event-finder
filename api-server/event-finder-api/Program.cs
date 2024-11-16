@@ -1,9 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using event_finder_api.models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddDbContext<EventContext>(options =>
+    options.UseInMemoryDatabase("Events"));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
